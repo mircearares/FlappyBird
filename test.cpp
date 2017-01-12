@@ -1,96 +1,7 @@
-#include<iostream>
-#include<conio.h>
-#include<stdio.h>
-#include<string>
-#include<windows.h>
-#include<fstream>
-#include<algorithm>
-#include<graphics.h>
-#include<time.h>
-using namespace std;
-
-fstream file("rez.txt", ios::in | ios::out | ios::app);
-
-char a[23][98];
-int canColide=1, nrRes=0;
-
-typedef struct
-{
-    int x, y;
-}PASARE;
-
-PASARE bird;
-
-typedef struct
-{
-    int score, time;
-}RESULTS;
-
-RESULTS result[100];
-
-void addResult(int rez, int tim)
-{
-    result[nrRes].score=rez;
-    result[nrRes].time=tim;
-    nrRes++;
-}
-
-void readResults()
-{
-    int rez, tim;
-    while(file>>rez>>tim)
-        addResult(rez, tim);
-}
-
-void writeResults(int rez, int tim)
-{
-    file.clear();
-    file<<rez<<" "<<tim<<"\n";
-    file.close();
-}
-
-bool comp(RESULTS a, RESULTS b)
-{
-    if(a.score<b.score)
-        return 1;
-    return 0;
-}
-
-void writeResultsConsole()
-{
-    readResults();
-    sort(result, result+nrRes, comp);
-    for(int i=nrRes-1;i>=0;i--)
-        cout<<result[i].score<<" "<<result[i].time<<"s\n";
-}
-int collision()
-{
-   if(a[bird.y-1][bird.x]=='#' && a[bird.y-1][bird.x-1]=='#' && a[bird.y-1][bird.x+1]=='#')
-        return 0;
-   if((a[bird.y][bird.x]=='B' && a[bird.y-1][bird.x]=='#' && a[bird.y+1][bird.x]=='#')
-       ||(a[bird.y][bird.x]=='B' && a[bird.y][bird.x+1]=='#' && a[bird.y][bird.x+2]=='#')
-       ||(a[bird.y][bird.x]=='B' && a[bird.y-1][bird.x]=='#' && a[bird.y-2][bird.x]=='#')
-       ||(a[bird.y][bird.x]=='B' && a[bird.y][bird.x-1]=='#' && a[bird.y][bird.x-2]=='#')) //merge oarecum, capetele de la tevi tre facute cu 3 stelute
-        return 1;
-    return 0;
-}
-
-int collisionPowerUp()
-{
-   if((a[bird.y][bird.x]=='B' && a[bird.y][bird.x+1]=='W')
-      ||(a[bird.y][bird.x]=='B' && a[bird.y][bird.x+1]=='R')
-      ||(a[bird.y][bird.x]=='B' && a[bird.y+1][bird.x]=='R')
-      ||(a[bird.y][bird.x]=='B' && a[bird.y-1][bird.x]=='W'))
-        return 1;
-   return 0;
-
-}
-
-void drawBird()
-{
-    a[bird.y][bird.x]='B';
-    a[bird.y][bird.x-1]=0;
-}
+#include"biblioteci.cpp"
+#include"bird.cpp"
+#include"results.cpp"
+#include"powerups.cpp"
 
 void drawLand()
 {
@@ -104,23 +15,6 @@ int collisionLand()
         return 1;
     return 0;
 }
-
-// astea 2 pot sa le unesc intr-un singur subprogram mai incolo
-void movUpBird()
-{
-    a[bird.y][bird.x]=0;
-    bird.y--;
-    a[bird.y][bird.x]='B';
-    Beep(200,50);
-}
-
-void movDnBird()
-{
-    a[bird.y][bird.x]=0;
-    bird.y++;
-    a[bird.y][bird.x]='B';
-}
-
 
 void genObst()
 {
@@ -156,74 +50,11 @@ void afis()
     Sleep(50);
 }
 
-void genPowerUp()
-{
-    int poz=rand()% 16+10;
-    a[poz][94]='P';
-    a[poz][95]='W';
-    a[poz+1][94]='W';
-    a[poz+1][95]='R';
-}
-
 bool addScore()
 {
     if(a[0][bird.x]=='#' && a[20][bird.x] && !collision())
         return true;
     return false;
-}
-
-void deletePowerUp()
-{
-    if((a[bird.y][bird.x]=='B' && a[bird.y][bird.x+1]=='W')
-      ||(a[bird.y][bird.x]=='B' && a[bird.y][bird.x+1]=='R')
-      ||(a[bird.y][bird.x]=='B' && a[bird.y+1][bird.x]=='R')
-      ||(a[bird.y][bird.x]=='B' && a[bird.y-1][bird.x]=='W'))
-    {
-        a[bird.y+1][bird.x+1]=a[bird.y][bird.x+1]=a[bird.y-1][bird.x+1]=
-        a[bird.y+1][bird.x]=a[bird.y-1][bird.x]=a[bird.y+1][bird.x-1]=
-        a[bird.y][bird.x-1]=a[bird.y-1][bird.x-1]=' ';
-    }
-}
-
-int sleep_value=15;//150
-
-void resetValues()
-{
-    sleep_value=15;//lasa 150
-    canColide=1;
-}
-
-void sleepValueIncrease()
-{
-    sleep_value=300;
-}
-
-void sleepValueDecrease()
-{
-    sleep_value=7;//10
-}
-
-void powerUp()//trebuie testate fiecare in parte
-{
-    int powerUp=rand()% 2;
-    switch(powerUp)
-    {
-        case 0:
-        {
-           sleepValueIncrease();
-           break;
-        }
-        case 1:
-        {
-           sleepValueDecrease();
-           break;
-        }
-        case 2:
-        {
-            canColide=0;
-            break;
-        }
-    }
 }
 
 void game()
@@ -246,7 +77,7 @@ void game()
                 return;
             if(nr%15==0)
                 genObst();
-            else if((nr+1)%105==0 && !powerUpHit)
+            else if((nr+1)%75==0 && !powerUpHit)
                 genPowerUp();
 
             drawBird();
@@ -291,12 +122,4 @@ void game()
         }
     }
 }
-/*
-int main()
-{
-    game();
-    return 0;
-}
-*/
-
 

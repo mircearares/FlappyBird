@@ -1,18 +1,17 @@
-/*
-#include<iostream>
-#include<windows.h>
-#include<conio.h>
-#include<string>
-#include<stdio.h>
-using namespace std;
-*/
 #include "test.cpp"
 
-void screen()
+void helpScreen()
 {
     system("cls");
-
-
+    cout<<"Press SPACE to fly between the obstacles    \n";Sleep(100);
+    cout<<"Every successful pass between the pipes is rewarded with 1pt    \n";Sleep(150);
+    cout<<"If you collide with the pipes, the game will end and your SCORE and TIME will be saved in the leaderboard   \n";Sleep(200);
+    cout<<"There are going to be 3 types of Power Ups \n";Sleep(100);
+    cout<<" SL              FS             NC     \n";
+    cout<<" LW              ST             CL     \n";
+    cout<<"^slow^         ^fast^     ^no collision^";Sleep(300);
+    cout<<"\n\n\n GOOD LUCK. HAVE FUN";Sleep(300);
+    cout<<"\n\n\n PRESS SPACE TO START";
 }
 
 void PrintMenu()
@@ -35,7 +34,6 @@ void PrintMenu()
         cout<<"| |       | |____ | |    | || |       | |          | |      | |___| || || |  | || |_| |      \n";Sleep(100);
         cout<<"|_|       |______||_|    |_||_|       |_|          |_|      |_______||_||_|  |_||____|        \n\n";Sleep(100);
 
-        char a=219;
         for(int i=0; i<3;i++)
         {
             if(i==option)
@@ -72,11 +70,10 @@ void PrintMenu()
                     {
                         case 0:
                         {
-                            cout<<"\n\n\n Commencing game...\n\n";
                             system("cls");
-                            cout<<"Press SPACE to play";
-                            Sleep(1000);
+                            helpScreen();
                             game();
+                            PrintMenu();
                             Sleep(10000);
                         }break;
                         case 1:
