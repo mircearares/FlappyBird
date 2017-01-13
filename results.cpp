@@ -36,6 +36,8 @@ bool comp(RESULTS a, RESULTS b)
 {
     if(a.score<b.score)
         return 1;
+    else if(a.time<b.time)
+        return 1;
     return 0;
 }
 
@@ -43,6 +45,9 @@ void writeResultsConsole()
 {
     readResults();
     sort(result, result+nrRes, comp);
+    cout<<"Place    Score     Time \n";
     for(int i=nrRes-1;i>=0;i--)
-        cout<<result[i].score<<" "<<result[i].time<<"s\n";
+       cout<<"  "<<nrRes-i<<".      "<<result[i].score<<"      "<<result[i].time<<"s\n";
+
+
 }

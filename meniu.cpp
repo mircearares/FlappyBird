@@ -13,9 +13,8 @@ void helpScreen()
     cout<<" LW              ST             CL     \n";
     cout<<"^slow^         ^fast^     ^no collision^";Sleep(300);
     cout<<"\n\n\n GOOD LUCK. HAVE FUN";Sleep(300);
-    cout<<"\n\n\n PRESS SPACE TO START";
-    if((GetAsyncKeyState((VK_SPACE))))
-        return ;
+    //cout<<"\n\n\n PRESS SPACE TO START";
+    Sleep(3000);
 }
 
 void PrintMenu()
@@ -90,7 +89,7 @@ void PrintMenu()
                         }
                         case 1:
                         {
-                            cout<<"\n\n\n LeaderBoard ! \n";
+                            cout<<"\n\n\n       LeaderBoard ! \n";
                             writeResultsConsole();
                             Sleep(10000);
                             break;

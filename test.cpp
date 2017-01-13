@@ -22,7 +22,7 @@ bool addScore()
 
 void game()
 {
-    int nr=0, score=0, powerUpHit=0, timer=0;
+    int nr=0, score=0, powerUpHit=0, timer;
     float time_elapsed=0;
     const clock_t begin_time = clock();
 
@@ -40,7 +40,7 @@ void game()
                 return;
             if(nr%15==0)
                 genObst();
-            else if((nr+1)%60==0 && !powerUpHit)
+            else if((nr+1)%55==0 && !powerUpHit)
                 genPowerUp();
 
             drawBird();
@@ -66,13 +66,10 @@ void game()
             {
                 powerUp();
                 powerUpHit=1;
-                timer=0;
-                deletePowerUp();
+                timer = clock()/CLOCKS_PER_SEC;
             }
 
-            if(powerUpHit)
-                timer++;
-            if(powerUpHit && timer==20)
+            if(powerUpHit &&(clock()/CLOCKS_PER_SEC)-timer== 10)
             {
                 resetValues();
                 powerUpHit=0;
@@ -86,16 +83,18 @@ void game()
 
             nr++;
             movObst();
+            movPowerUp();
             afis();
             Sleep(sleep_value);
         }
     }
 }
-/*
+
 int main()
 {
     game();
     return 100;
 }
-*/
+
+
 
