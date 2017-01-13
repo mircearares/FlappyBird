@@ -1,4 +1,4 @@
-#include "test.cpp"
+#include "game.cpp"
 
 void helpScreen()
 {
