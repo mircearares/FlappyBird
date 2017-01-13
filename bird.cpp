@@ -14,7 +14,8 @@ int collision()
    if((a[bird.y][bird.x]=='B' && a[bird.y-1][bird.x]=='#' && a[bird.y+1][bird.x]=='#')
        ||(a[bird.y][bird.x]=='B' && a[bird.y][bird.x+1]=='#' && a[bird.y][bird.x+2]=='#')
        ||(a[bird.y][bird.x]=='B' && a[bird.y-1][bird.x]=='#' && a[bird.y-2][bird.x]=='#')
-       ||(a[bird.y][bird.x]=='B' && a[bird.y][bird.x-1]=='#' && a[bird.y][bird.x-2]=='#'))
+       ||(a[bird.y][bird.x]=='B' && a[bird.y][bird.x-1]=='#' && a[bird.y][bird.x-2]=='#')
+       ||(a[bird.y][bird.x]=='B' && a[bird.y][bird.x-1]=='#' && a[bird.y+1][bird.x-1]=='#'))
         return 1;
     return 0;
 }

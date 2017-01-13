@@ -4,17 +4,17 @@ void helpScreen()
 {
     system("cls");
     cout<<"Press SPACE to fly between the obstacles    \n";Sleep(100);
-    cout<<"Every successful pass between the \
-              pipes is rewarded with 1pt    \n";Sleep(150);
-    cout<<"If you collide with the pipes, the game will end \
-           and your SCORE and TIME will be saved in the leaderboard \n"; Sleep(200);
+    cout<<"Every successful pass between the \n";
+    cout<<"   pipes is rewarded with 1pt    \n";Sleep(150);
+    cout<<"If you collide with the pipes \n";
+    cout<<"     the game will end \n";
+    cout<<"and your SCORE and TIME will be saved \n";
+    cout<<"     in the leaderboard \n"; Sleep(200);
     cout<<"There are going to be 3 types of Power Ups \n";Sleep(100);
-    cout<<" SL              FS             NC     \n";
-    cout<<" LW              ST             CL     \n";
+    cout<<"  S               F            N     \n";
     cout<<"^slow^         ^fast^     ^no collision^";Sleep(300);
     cout<<"\n\n\n GOOD LUCK. HAVE FUN";Sleep(300);
-    //cout<<"\n\n\n PRESS SPACE TO START";
-    Sleep(3000);
+    Sleep(7500);
 }
 
 void PrintMenu()
