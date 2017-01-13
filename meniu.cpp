@@ -4,14 +4,18 @@ void helpScreen()
 {
     system("cls");
     cout<<"Press SPACE to fly between the obstacles    \n";Sleep(100);
-    cout<<"Every successful pass between the pipes is rewarded with 1pt    \n";Sleep(150);
-    cout<<"If you collide with the pipes, the game will end and your SCORE and TIME will be saved in the leaderboard   \n";Sleep(200);
+    cout<<"Every successful pass between the \
+              pipes is rewarded with 1pt    \n";Sleep(150);
+    cout<<"If you collide with the pipes, the game will end \
+           and your SCORE and TIME will be saved in the leaderboard \n"; Sleep(200);
     cout<<"There are going to be 3 types of Power Ups \n";Sleep(100);
     cout<<" SL              FS             NC     \n";
     cout<<" LW              ST             CL     \n";
     cout<<"^slow^         ^fast^     ^no collision^";Sleep(300);
     cout<<"\n\n\n GOOD LUCK. HAVE FUN";Sleep(300);
     cout<<"\n\n\n PRESS SPACE TO START";
+    if((GetAsyncKeyState((VK_SPACE))))
+        return ;
 }
 
 void PrintMenu()
@@ -23,25 +27,24 @@ void PrintMenu()
 	while(1)
     {
         system("cls");
-
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-        cout<<" _____  _      ______  ______  ______  __   __ \n";Sleep(100);
-        cout<<"|  ___|| |    |  __  ||  __  ||  __  ||  | |  |\n";Sleep(100);
-        cout<<"| |___ | |    | |__| || |__| || |__| ||  |_|  |\n";Sleep(100);
-        cout<<"|  ___|| |    |  __  || _____|| _____| |     | \n";Sleep(100);
-        cout<<"| |    | |    | |  | || |     | |       |   |  \n";Sleep(100);
-        cout<<"| |    | |    | |  | || |     | |        | |   \n";Sleep(100);
-        cout<<"| |    | |___ | |  | || |     | |        | |   \n";Sleep(100);
-        cout<<"|_|    |_____||_|  |_||_|     |_|        |_|   \n\n";Sleep(100);
+        cout<<" _____  _      ______  ______  ______  __   __ \n";
+        cout<<"|  ___|| |    |  __  ||  __  ||  __  ||  | |  |\n";
+        cout<<"| |___ | |    | |__| || |__| || |__| ||  |_|  |\n";
+        cout<<"|  ___|| |    |  __  || _____|| _____| |     | \n";
+        cout<<"| |    | |    | |  | || |     | |       |   |  \n";
+        cout<<"| |    | |    | |  | || |     | |        | |   \n";
+        cout<<"| |    | |___ | |  | || |     | |        | |   \n";
+        cout<<"|_|    |_____||_|  |_||_|     |_|        |_|   \n\n";
 
-        cout<<" ______  _  ______  ____   \n"; Sleep(100);
-        cout<<"|  __  ||_||  __  ||  _ |   \n"; Sleep(100);
-        cout<<"| |  | | _ | |__| || | | | \n"; Sleep(100);
-        cout<<"| |__| || ||     _|| |  | |  \n";Sleep(100);
-        cout<<"|  __  || ||  _ |  | |   | | \n";Sleep(100);
-        cout<<"| |  | || || | |_| | |  | |  \n";Sleep(100);
-        cout<<"| |__| || || |  | || |_| |   \n";Sleep(100);
-        cout<<"|______||_||_|  |_||____|    \n";Sleep(100);
+        cout<<" ______  _  ______  ____   \n";
+        cout<<"|  __  ||_||  __  ||  _ |   \n";
+        cout<<"| |  | | _ | |__| || | | | \n";
+        cout<<"| |__| || ||     _|| |  | |  \n";
+        cout<<"|  __  || ||  _ |  | |   | | \n";
+        cout<<"| |  | || || | |_| | |  | |  \n";
+        cout<<"| |__| || || |  | || |_| |   \n";
+        cout<<"|______||_||_|  |_||____|    \n";
         for(int i=0; i<3;i++)
         {
             if(i==option)
@@ -83,17 +86,20 @@ void PrintMenu()
                             game();
                             PrintMenu();
                             Sleep(10000);
-                        }break;
+                            break;
+                        }
                         case 1:
                         {
                             cout<<"\n\n\n LeaderBoard ! \n";
                             writeResultsConsole();
                             Sleep(10000);
-                        }break;
+                            break;
+                        }
                         case 2:
                         {
                             return;
-                        }break;
+                            break;
+                        }
                     }
                 }
             }

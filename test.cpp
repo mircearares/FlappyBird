@@ -2,52 +2,15 @@
 #include"bird.cpp"
 #include"results.cpp"
 #include"powerups.cpp"
+#include"map.cpp"
 
-void drawLand()
+void loseGame(int score, int time)
 {
-    for(int i=0;i<=48;i++)//97
-        a[21][i]='#';
-}
-
-int collisionLand()
-{
-    if(bird.y==21)
-        return 1;
-    return 0;
-}
-
-void genObst()
-{
-    int y1=rand() % 11;
-    for(int i=0;i<=y1;i++)
-        a[i][46]='#';//95
-    a[y1][45]=a[y1][47]='#';//94 si 96
-
-    for(int i=y1+6;i<21;i++)
-        a[i][46]='#';//95
-    a[y1+6][45]=a[y1+6][47]='#';
-
-}
-
-void movObst()
-{
-    for(int i=0;i<22;i++)
-        for(int j=0;j<48;j++)//97
-            a[i][j]=a[i][j+1];
-
-}
-
-void afis()
-{
-    //cout.sync_with_stdio(0);//afisare mai rapida
     system("cls");
-    for(int i=0;i<=21;i++)
-    {
-        for(int j=0;j<47;j++)//96
-            cout<<a[i][j];
-        cout<<"\n";
-    }
-    Sleep(50);
+    cout<<"         You lost          \n";
+    cout<<"    Score         Time \n";
+    cout<<"     "<<score<<"             "<<time<<"s";
+    Sleep(1500);
 }
 
 bool addScore()
@@ -77,7 +40,7 @@ void game()
                 return;
             if(nr%15==0)
                 genObst();
-            else if((nr+1)%60  ==0 && !powerUpHit)
+            else if((nr+1)%60==0 && !powerUpHit)
                 genPowerUp();
 
             drawBird();
@@ -90,9 +53,12 @@ void game()
             if((collision() || collisionLand()) && canColide)
             {
                 system("cls");
-                cout<<"Scorul dvs. este: "<<score;
+                resetMap();
+
                 time_elapsed=(clock()-begin_time)/CLOCKS_PER_SEC;
                 writeResults(score, time_elapsed);
+
+                loseGame(score, time_elapsed);
                 Sleep(1500);
                 return;
             }
@@ -107,7 +73,10 @@ void game()
             if(powerUpHit)
                 timer++;
             if(powerUpHit && timer==20)
+            {
                 resetValues();
+                powerUpHit=0;
+            }
 
             if(addScore())
             {
@@ -129,3 +98,4 @@ int main()
     return 100;
 }
 */
+
