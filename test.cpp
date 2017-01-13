@@ -5,7 +5,7 @@
 
 void drawLand()
 {
-    for(int i=0;i<=97;i++)
+    for(int i=0;i<=48;i++)//97
         a[21][i]='#';
 }
 
@@ -20,19 +20,19 @@ void genObst()
 {
     int y1=rand() % 11;
     for(int i=0;i<=y1;i++)
-        a[i][95]='#';
-    a[y1][94]=a[y1][96]='#';
+        a[i][46]='#';//95
+    a[y1][45]=a[y1][47]='#';//94 si 96
 
     for(int i=y1+6;i<21;i++)
-        a[i][95]='#';
-    a[y1+6][94]=a[y1+6][96]='#';
+        a[i][46]='#';//95
+    a[y1+6][45]=a[y1+6][47]='#';
 
 }
 
 void movObst()
 {
     for(int i=0;i<22;i++)
-        for(int j=0;j<97;j++)
+        for(int j=0;j<48;j++)//97
             a[i][j]=a[i][j+1];
 
 }
@@ -43,7 +43,7 @@ void afis()
     system("cls");
     for(int i=0;i<=21;i++)
     {
-        for(int j=0;j<96;j++)
+        for(int j=0;j<47;j++)//96
             cout<<a[i][j];
         cout<<"\n";
     }
@@ -77,7 +77,7 @@ void game()
                 return;
             if(nr%15==0)
                 genObst();
-            else if((nr+1)%75==0 && !powerUpHit)
+            else if((nr+1)%60  ==0 && !powerUpHit)
                 genPowerUp();
 
             drawBird();
@@ -122,3 +122,10 @@ void game()
         }
     }
 }
+/*
+int main()
+{
+    game();
+    return 100;
+}
+*/

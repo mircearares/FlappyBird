@@ -1,4 +1,4 @@
-char a[23][98];
+char a[23][49];
 
 typedef struct
 {
@@ -27,6 +27,8 @@ void drawBird()
 
 void movUpBird()
 {
+    if(bird.y==0)
+        return;
     a[bird.y][bird.x]=0;
     bird.y--;
     a[bird.y][bird.x]='B';

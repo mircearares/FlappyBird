@@ -25,26 +25,34 @@ void PrintMenu()
         system("cls");
 
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-        cout<<" ________  _       ________  ________  _______  __     __    _______  _  ______  ____      \n";Sleep(100);
-        cout<<"|  ______|| |     |  ____  ||  ____  ||  ___  ||  |   |  |  |  ___  ||_||  __  ||  _ |      \n";Sleep(100);
-        cout<<"| |______ | |     | |____| || |____| || |___| | |  |_|  |   | |   | | _ | |__| || | | |      \n";Sleep(100);
-        cout<<"|  ______|| |     |  ____  || _______|| ______|  |     |    | |___| || ||     _|| |  | |     \n";Sleep(100);
-        cout<<"| |       | |     | |    | || |       | |         |   |     |  ___  || ||  _ |  | |   | |     \n";Sleep(100);
-        cout<<"| |       | |     | |    | || |       | |          | |      | |   | || || | |_| | |  | |     \n";Sleep(100);
-        cout<<"| |       | |____ | |    | || |       | |          | |      | |___| || || |  | || |_| |      \n";Sleep(100);
-        cout<<"|_|       |______||_|    |_||_|       |_|          |_|      |_______||_||_|  |_||____|        \n\n";Sleep(100);
+        cout<<" _____  _      ______  ______  ______  __   __ \n";Sleep(100);
+        cout<<"|  ___|| |    |  __  ||  __  ||  __  ||  | |  |\n";Sleep(100);
+        cout<<"| |___ | |    | |__| || |__| || |__| ||  |_|  |\n";Sleep(100);
+        cout<<"|  ___|| |    |  __  || _____|| _____| |     | \n";Sleep(100);
+        cout<<"| |    | |    | |  | || |     | |       |   |  \n";Sleep(100);
+        cout<<"| |    | |    | |  | || |     | |        | |   \n";Sleep(100);
+        cout<<"| |    | |___ | |  | || |     | |        | |   \n";Sleep(100);
+        cout<<"|_|    |_____||_|  |_||_|     |_|        |_|   \n\n";Sleep(100);
 
+        cout<<" ______  _  ______  ____   \n"; Sleep(100);
+        cout<<"|  __  ||_||  __  ||  _ |   \n"; Sleep(100);
+        cout<<"| |  | | _ | |__| || | | | \n"; Sleep(100);
+        cout<<"| |__| || ||     _|| |  | |  \n";Sleep(100);
+        cout<<"|  __  || ||  _ |  | |   | | \n";Sleep(100);
+        cout<<"| |  | || || | |_| | |  | |  \n";Sleep(100);
+        cout<<"| |__| || || |  | || |_| |   \n";Sleep(100);
+        cout<<"|______||_||_|  |_||____|    \n";Sleep(100);
         for(int i=0; i<3;i++)
         {
             if(i==option)
             {
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-                cout<<Meniu[i]<<"\n";
+                cout<<"         "<<Meniu[i]<<"\n";
             }
             else
             {
                 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-                cout<<Meniu[i]<<"\n";
+                cout<<"         "<<Meniu[i]<<"\n";
             }
         }
 

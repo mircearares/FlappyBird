@@ -15,11 +15,12 @@ int collisionPowerUp()
 void genPowerUp()
 {
     srand(time(0));
-    int poz=rand()% 6+10;
-    a[poz][94]='P';
-    a[poz][95]='W';
-    a[poz+1][94]='W';
-    a[poz+1][95]='R';
+    int poz=rand()% 8+7;
+
+    a[poz][45]='P';//94
+    a[poz][46]='W';//95
+    a[poz+1][45]='W';//94
+    a[poz+1][46]='R';//95
 }
 
 void deletePowerUp()
@@ -35,7 +36,7 @@ void deletePowerUp()
     }
 }
 
-int sleep_value=15;//150
+int sleep_value=1;//150
 
 void resetValues()
 {
