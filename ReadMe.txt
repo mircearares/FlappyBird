@@ -4,7 +4,7 @@ Flappy Bird in consola
 -nu are nevoie de resurse aditionale, deoarece m-am folosit de bibliotecile care au venit cu CodeBlocks, 
  nemaifiind nevoie de a instala altele, cum ar fi fost in cazul SDL sau SFML
 -jocul este usor de accesat
-  >se poate deschide prin Game\main.exe sau compilat din Game\main.cpp 
+  >se poate deschide prin Game\main.exe sau compilat din Game\main.cpp si va trebui insotit de rez.txt pentru pastrarea rezultatelor
   >odata deschis utilizatorul va trebui sa faca una din cele 4 alegeri pe care le poate face 
    utilizand SAGETILE SUS si JOS
   >dupa ce jucatorul si-a ales optiunea(adica culoarea este albastra) acesta trebuie sa dea ENTER 
