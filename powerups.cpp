@@ -48,7 +48,7 @@ void genPowerUp()
     int type=rand()% 3+1;
     pwr.x=46;
     pwr.y=rand()% 16;
-    typePowerUp(3);
+    typePowerUp(type);
 
 }
 
